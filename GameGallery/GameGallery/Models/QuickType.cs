@@ -4,7 +4,7 @@
 //
 //    using QuickType;
 //
-//    var data = Data.FromJson(jsonString);
+//    var purpleQuickType = PurpleQuickType.FromJson(jsonString);
 
 namespace QuickType
 {
@@ -15,7 +15,7 @@ namespace QuickType
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class Data
+    public partial class PurpleQuickType
     {
         [JsonProperty("error")]
         public string Error { get; set; }
@@ -182,14 +182,14 @@ namespace QuickType
 
     public enum ImageTags { AllImages, AllImagesArcFlyers, AllImagesBoxArt, AllImagesBoxArtGameCovers, AllImagesBoxArtWikiSubmissions };
 
-    public partial class Data
+    public partial class PurpleQuickType
     {
-        public static Data FromJson(string json) => JsonConvert.DeserializeObject<Data>(json, QuickType.Converter.Settings);
+        public static PurpleQuickType FromJson(string json) => JsonConvert.DeserializeObject<PurpleQuickType>(json, QuickType.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this Data self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
+        public static string ToJson(this PurpleQuickType self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
     internal static class Converter

@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using GameGallery.Models;
-using Flurl;
-using Flurl.Http;
-using GiantBomb.Api;
-using GiantBomb.Api.Model;
 using RestSharp.Portable;
+using RestSharp;
+using RestSharp.Authenticators;
+using GiantBomb.Api.Model;
+using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using WebApiContrib.Formatting;
 using QuickType;
+using Newtonsoft.Json.Linq;
 
 namespace GameGallery.Controllers
 {
@@ -21,23 +15,35 @@ namespace GameGallery.Controllers
     {
         public IActionResult Index()
         {
+            RestClient client = new RestClient("https://www.giantbomb.com");
+            RestSharp.RestRequest request = new RestSharp.RestRequest("api/games", RestSharp.Method.GET);
+            request.AddParameter("api_key", "bbf11d4afbc46237a98e179ed5e541945d1b4bf0", RestSharp.ParameterType.QueryString);
+            request.AddParameter("platforms", "157", RestSharp.ParameterType.QueryString);
+            request.AddParameter("limit", "25", RestSharp.ParameterType.QueryString);
+            request.AddParameter("format", "json", RestSharp.ParameterType.QueryString);
+            request.AddParameter("sort", "original_release_date:desc", RestSharp.ParameterType.QueryString);
 
-            var giantBomb = new GiantBombRestClient("bbf11d4afbc46237a98e179ed5e541945d1b4bf0");
+            RestSharp.IRestResponse response = client.Execute(request);
 
-            // Get all search results
-            GiantBomb.Api.Model.Platform platform = giantBomb.GetPlatform(157);
-            ViewBag.platform = platform;
+            dynamic results = JsonConvert.DeserializeObject<dynamic>(response.Content);
 
-
-
-            var results = giantBomb.SearchForAllGames("nintendo switch");
-
-            // Display
-            results = results.OrderByDescending(g => g.DateAdded);
+            JObject obj = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(response.Content);
+            JArray jarr = (JArray)obj["results"];
 
 
+            List<String[]> games = new List<String[]>();
 
-            return View(results);
+            foreach (var item in jarr)
+            {
+                string Id = Convert.ToString(item["id"]);
+                string Name = Convert.ToString(item["name"]);
+                string Image = Convert.ToString(item["image"]["medium_url"]);
+
+                games.Add(new string[] { Id, Name, Image });
+            }
+
+
+            return View(games);
         }
      
 
