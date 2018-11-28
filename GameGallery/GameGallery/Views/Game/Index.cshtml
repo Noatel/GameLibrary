@@ -1,4 +1,4 @@
-﻿@Model IEnumerable<GiantBomb.Api.Model.Game>
+﻿@Model I
     @{
         ViewBag.Title = "Index";
         Layout = "~/Views/Shared/_Layout.cshtml";
@@ -40,14 +40,14 @@
 
         </tr>
         @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td><img src="@item.Image.IconUrl" alt="Alternate Text" /></td>
-                <td>@item.OriginalPrice</td>
-                <td>@item.ReleaseDate</td>
-            </tr>
-        }
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td><img src="@item.Image.IconUrl" alt="Alternate Text" /></td>
+                    <td>@item.OriginalPrice</td>
+                    <td>@item.ReleaseDate</td>
+                </tr>
+            }
     </table>
     <strong style="color:green">@TempData["status"]</strong>
