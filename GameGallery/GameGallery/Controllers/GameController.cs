@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using RestSharp.Portable;
 using RestSharp;
 using RestSharp.Authenticators;
-using GiantBomb.Api.Model;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using QuickType;
 using Newtonsoft.Json.Linq;
+using GameGallery.Models;
 
 namespace GameGallery.Controllers
 {
@@ -25,19 +25,20 @@ namespace GameGallery.Controllers
             // Nintendo 64 = 43
 
 
-            List<String[]> games = getGamesByPlatform(157);
-            List<String[]> platforms = getPlatforms();
+            List<Game> games = getGamesByPlatform(157);
+            List<Game> platforms = getPlatforms();
+            List<Game> mario = getGamesByName("mario");
 
-            return View(platforms);
+            return View(mario);
         }
      
-        public List<String[]> getGamesByPlatform(int platformID){
+        public List<Game> getGamesByPlatform(int platformID){
            
             RestSharp.RestRequest request = new RestSharp.RestRequest("api/games", RestSharp.Method.GET);
             request.AddParameter("api_key", apiKey, RestSharp.ParameterType.QueryString);
-            request.AddParameter("platforms", "157", RestSharp.ParameterType.QueryString);
-            request.AddParameter("limit", "25", RestSharp.ParameterType.QueryString);
+            request.AddParameter("platforms", platformID, RestSharp.ParameterType.QueryString);
             request.AddParameter("format", "json", RestSharp.ParameterType.QueryString);
+            request.AddParameter("sort", "original_release_date:desc", RestSharp.ParameterType.QueryString);
 
             RestSharp.IRestResponse response = client.Execute(request);
 
@@ -46,20 +47,30 @@ namespace GameGallery.Controllers
             JObject obj = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(response.Content);
             JArray jarr = (JArray)obj["results"];
 
-            List<String[]> games = new List<String[]>();
+            List<Game> games = new List<Game>();
 
             foreach (var item in jarr)
             {
                 string Id = Convert.ToString(item["id"]);
-                string Name = Convert.ToString(item["name"]);
-                string Image = Convert.ToString(item["image"]["medium_url"]);
 
-                games.Add(new string[] { Id, Name, Image });
+                if (!Id.Equals("67742") && !Id.Equals("59938") && !Id.Equals("71095") && !Id.Equals("70513") && !Id.Equals("65713") && !Id.Equals("66679"))
+                {
+
+                    Game game = new Game()
+                    {
+                        Name = Convert.ToString(item["name"]),
+                        Image = Convert.ToString(item["image"]["original_url"])
+                    };
+
+                    //Adding the game
+                    games.Add(game);
+                }
+
             }
 
             return games;
         }
-        public List<String[]> getPlatforms()
+        public List<Game> getPlatforms()
         {
 
             RestSharp.RestRequest request = new RestSharp.RestRequest("api/platforms", RestSharp.Method.GET);
@@ -75,15 +86,64 @@ namespace GameGallery.Controllers
             JObject obj = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(response.Content);
             JArray jarr = (JArray)obj["results"];
 
-            List<String[]> games = new List<String[]>();
+            List<Game> games = new List<Game>();
 
             foreach (var item in jarr)
             {
                 string Id = Convert.ToString(item["id"]);
-                string Name = Convert.ToString(item["name"]);
-                string Image = Convert.ToString(item["image"]["medium_url"]);
 
-                games.Add(new string[] { Id, Name, Image });
+                if (!Id.Equals("67742") && !Id.Equals("59938") && !Id.Equals("71095") && !Id.Equals("70513") && !Id.Equals("65713") && !Id.Equals("66679"))
+                {
+
+                    Game game = new Game()
+                    {
+                        Name = Convert.ToString(item["name"]),
+                        Image = Convert.ToString(item["image"]["original_url"])
+                    };
+
+                    games.Add(game);
+                }
+
+            }
+
+            return games;
+        }
+        public List<Game> getGamesByName(string name)
+        {
+
+            RestSharp.RestRequest request = new RestSharp.RestRequest("api/games", RestSharp.Method.GET);
+            request.AddParameter("api_key", apiKey, RestSharp.ParameterType.QueryString);
+            request.AddParameter("format", "json", RestSharp.ParameterType.QueryString);
+            request.AddParameter("filter", "name:" + name, RestSharp.ParameterType.QueryString);
+
+            request.AddParameter("limit", "20", RestSharp.ParameterType.QueryString);
+            request.AddParameter("sort", "original_release_date:desc", RestSharp.ParameterType.QueryString);
+
+            RestSharp.IRestResponse response = client.Execute(request);
+
+            dynamic results = JsonConvert.DeserializeObject<dynamic>(response.Content);
+
+            JObject obj = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(response.Content);
+            JArray jarr = (JArray)obj["results"];
+
+            List<Game> games = new List<Game>();
+
+            foreach (var item in jarr)
+            {
+                string Id = Convert.ToString(item["id"]);
+
+                if (!Id.Equals("67742") && !Id.Equals("59938") && !Id.Equals("71095") && !Id.Equals("70513") && !Id.Equals("65713") && !Id.Equals("66679"))
+                {
+
+                    Game game = new Game()
+                    {
+                        Name = Convert.ToString(item["name"]),
+                        Image = Convert.ToString(item["image"]["original_url"])
+                    };
+
+                    games.Add(game);
+                }
+
             }
 
             return games;
