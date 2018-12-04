@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameGallery", "GameGallery\GameGallery.csproj", "{C6D0AE04-21B4-489C-B80F-1219B2C87251}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManager", "GameManager\GameManager.csproj", "{D87C6AB4-4AB8-488B-8FD3-73C339BA2798}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,9 +9,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C6D0AE04-21B4-489C-B80F-1219B2C87251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6D0AE04-21B4-489C-B80F-1219B2C87251}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6D0AE04-21B4-489C-B80F-1219B2C87251}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6D0AE04-21B4-489C-B80F-1219B2C87251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D87C6AB4-4AB8-488B-8FD3-73C339BA2798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D87C6AB4-4AB8-488B-8FD3-73C339BA2798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D87C6AB4-4AB8-488B-8FD3-73C339BA2798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D87C6AB4-4AB8-488B-8FD3-73C339BA2798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

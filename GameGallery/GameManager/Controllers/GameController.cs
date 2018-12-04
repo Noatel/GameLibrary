@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using RestSharp.Portable;
+using GameManager.Models;
 using RestSharp;
 using RestSharp.Authenticators;
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using QuickType;
 using Newtonsoft.Json.Linq;
-using GameGallery.Models;
 
-namespace GameGallery.Controllers
+
+
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace GameManager.Controllers
 {
     public class GameController : Controller
     {
@@ -31,9 +35,10 @@ namespace GameGallery.Controllers
 
             return View(mario);
         }
-     
-        public List<Game> getGamesByPlatform(int platformID){
-           
+
+        public List<Game> getGamesByPlatform(int platformID)
+        {
+
             RestSharp.RestRequest request = new RestSharp.RestRequest("api/games", RestSharp.Method.GET);
             request.AddParameter("api_key", apiKey, RestSharp.ParameterType.QueryString);
             request.AddParameter("platforms", platformID, RestSharp.ParameterType.QueryString);
@@ -62,7 +67,7 @@ namespace GameGallery.Controllers
                         Image = Convert.ToString(item["image"]["original_url"])
                     };
 
-                    //Adding the game
+                    //asdfasdfasfd
                     games.Add(game);
                 }
 
@@ -151,5 +156,4 @@ namespace GameGallery.Controllers
 
 
     }
-
 }

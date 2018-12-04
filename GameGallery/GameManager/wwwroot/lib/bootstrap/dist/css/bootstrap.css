@@ -104,9 +104,9 @@ img {
     border: 0;
 }
 
-    svg:not(:root) {
-        overflow: hidden;
-    }
+svg:not(:root) {
+    overflow: hidden;
+}
 
 figure {
     margin: 1em 40px;
@@ -291,10 +291,10 @@ th {
         display: none;
     }
 
-        .btn > .caret,
-        .dropup > .btn > .caret {
-            border-top-color: #000 !important;
-        }
+    .btn > .caret,
+    .dropup > .btn > .caret {
+        border-top-color: #000 !important;
+    }
 
     .label {
         border: 1px solid #000;
@@ -3173,27 +3173,27 @@ label {
     font-weight: bold;
 }
 
-    input[type="search"] {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
+input[type="search"] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
-    input[type="radio"],
-    input[type="checkbox"] {
-        margin: 4px 0 0;
-        margin-top: 1px \9;
-        line-height: normal;
-    }
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+    line-height: normal;
+}
 
-    input[type="file"] {
-        display: block;
-    }
+input[type="file"] {
+    display: block;
+}
 
-    input[type="range"] {
-        display: block;
-        width: 100%;
-    }
+input[type="range"] {
+    display: block;
+    width: 100%;
+}
 
 select[multiple],
 select[size] {
@@ -3331,14 +3331,14 @@ input[type="search"] {
         cursor: pointer;
     }
 
-        .radio input[type="radio"],
-        .radio-inline input[type="radio"],
-        .checkbox input[type="checkbox"],
-        .checkbox-inline input[type="checkbox"] {
-            position: absolute;
-            margin-top: 4px \9;
-            margin-left: -20px;
-        }
+    .radio input[type="radio"],
+    .radio-inline input[type="radio"],
+    .checkbox input[type="checkbox"],
+    .checkbox-inline input[type="checkbox"] {
+        position: absolute;
+        margin-top: 4px \9;
+        margin-left: -20px;
+    }
 
     .radio + .radio,
     .checkbox + .checkbox {
@@ -3693,11 +3693,11 @@ select[multiple].input-lg {
             padding-left: 0;
         }
 
-            .form-inline .radio input[type="radio"],
-            .form-inline .checkbox input[type="checkbox"] {
-                position: relative;
-                margin-left: 0;
-            }
+        .form-inline .radio input[type="radio"],
+        .form-inline .checkbox input[type="checkbox"] {
+            position: relative;
+            margin-left: 0;
+        }
 
     .form-inline .has-feedback .form-control-feedback {
         top: 0;
@@ -5414,11 +5414,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
             padding-left: 0;
         }
 
-            .navbar-form .radio input[type="radio"],
-            .navbar-form .checkbox input[type="checkbox"] {
-                position: relative;
-                margin-left: 0;
-            }
+        .navbar-form .radio input[type="radio"],
+        .navbar-form .checkbox input[type="checkbox"] {
+            position: relative;
+            margin-left: 0;
+        }
 
     .navbar-form .has-feedback .form-control-feedback {
         top: 0;
@@ -5917,14 +5917,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         float: left;
     }
 
-        .pager .disabled > a,
-        .pager .disabled > a:hover,
-        .pager .disabled > a:focus,
-        .pager .disabled > span {
-            color: #777;
-            cursor: not-allowed;
-            background-color: #fff;
-        }
+    .pager .disabled > a,
+    .pager .disabled > a:hover,
+    .pager .disabled > a:focus,
+    .pager .disabled > span {
+        color: #777;
+        cursor: not-allowed;
+        background-color: #fff;
+    }
 
 .label {
     display: inline;
@@ -6087,16 +6087,16 @@ a.badge:focus {
         border-top-color: #d5d5d5;
     }
 
-    .container .jumbotron,
-    .container-fluid .jumbotron {
-        padding-right: 15px;
-        padding-left: 15px;
-        border-radius: 6px;
-    }
+.container .jumbotron,
+.container-fluid .jumbotron {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 6px;
+}
 
-    .jumbotron .container {
-        max-width: 100%;
-    }
+.jumbotron .container {
+    max-width: 100%;
+}
 
 @media screen and (min-width: 768px) {
     .jumbotron {
@@ -6104,16 +6104,16 @@ a.badge:focus {
         padding-bottom: 48px;
     }
 
-        .container .jumbotron,
-        .container-fluid .jumbotron {
-            padding-right: 60px;
-            padding-left: 60px;
-        }
+    .container .jumbotron,
+    .container-fluid .jumbotron {
+        padding-right: 60px;
+        padding-left: 60px;
+    }
 
-        .jumbotron h1,
-        .jumbotron .h1 {
-            font-size: 63px;
-        }
+    .jumbotron h1,
+    .jumbotron .h1 {
+        font-size: 63px;
+    }
 }
 
 .thumbnail {

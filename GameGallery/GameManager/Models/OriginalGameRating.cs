@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GameGallery.Models
+namespace GameManager.Models
 {
     public class OriginalGameRating
     {
